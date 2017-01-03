@@ -1,0 +1,12 @@
+{{#if articles.length}}
+    <div class="articles">
+    {{#each articles}}
+        <a href="/details/{{this.id}}" class="article">
+            <div class="all-article-date">{{this.formattedDate}}</div>
+            <div class="article-title">{{this.title}}</div>
+        </a>
+    {{/each}}
+</div>
+{{else}}
+    <h1 class="center">No Articles</h1>
+{{/if}}

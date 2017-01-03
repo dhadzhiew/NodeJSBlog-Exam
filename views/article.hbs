@@ -1,0 +1,53 @@
+<div class="article-details">
+    <h1 class="center">{{article.title}}</h1>
+    <div class="article-date">Date: {{article.formattedDate}}</div>
+    <div class="aricle-views">Views: {{article.views}}</div>
+    <div class="clear"></div>
+    
+    <div class="article-content"> 
+        {{#if article.image}}
+            <div class="article-image"><img src="/images/{{article.image}}" alt=""></div>
+        {{/if}}
+    {{article.description}}</div>
+    <div class="article-action">
+        {{#if article.deleted}}
+            <a class="delete-button" href="/details/{{article.id}}/delete">Undelete</a>
+        {{else}}
+            <a class="delete-button" href="/details/{{article.id}}/delete">Delete</a>
+        {{/if}}
+    </div>
+</div>
+<div class="comments">
+    {{#if article.comments.length}}
+            {{#each article.comments}}
+                <div class="article-comment">
+                    <div class="article-comment-user">{{this.username}}</div>
+                    <div class="article-comment-date">{{this.formattedDate}}</div>
+                    <div class="clear"></div>
+                    <div class="article-comment-content">{{this.comment}}</div>
+                </div>
+            {{/each}}
+    {{else}}
+        <div class="info">No comments</div>
+    {{/if}}
+</div>
+{{#if errors.length}}
+    <ul class="errors">
+        {{#each errors}}
+            <li>{{this}}</li>
+        {{/each}}
+    </ul>
+{{/if}}
+<form action="/details/{{article.id}}/comment"  enctype="multipart/form-data" method="post" class="create-form">
+    <div class="form-element">
+            <label  for="field-title" class="form-label">Username</label>
+            <input type="text" id="field-title" name="username"/>
+    </div>
+    <div class="form-element">
+        <label class="form-label" for="comment">Description</label>
+        <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+    </div>
+    <div class="form-element">
+        <input type="submit" value="Add">
+    </div>
+</form>

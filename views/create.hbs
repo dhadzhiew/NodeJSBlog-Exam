@@ -1,0 +1,29 @@
+<h1 class="center">Create a new article</h1>
+{{#if creating}}
+    {{#if errors.length}}
+        <ul class="errors">
+            {{#each errors}}
+                <li>{{this}}</li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <div class="success">A new article was added.</div>
+    {{/if}}
+{{/if}}
+<form action="/create" method="POST" enctype="multipart/form-data" class="create-form">
+   <div class="form-element">
+        <label  for="field-title" class="form-label">Title</label>
+        <input type="text" id="field-title" name="title"/>
+   </div>
+    <div class="form-element">
+        <label class="form-label" for="description">Description</label>
+        <textarea name="description" id="description" cols="30" rows="10"></textarea>
+    </div>
+    <div class="form-element">
+        <label class="form-label" for="image">Image</label>
+        <input type="file" name="image" id="image">
+    </div>
+    <div class="form-element">
+        <input type="submit" value="Add">
+    </div>
+</form> 

@@ -1,0 +1,13 @@
+<h1 class="center">Welcome</h1>
+{{#if top.length}}
+    <div class="articles">
+    {{#each top}}
+        <a href="/details/{{this.id}}" class="article">
+            <div class="all-article-date">{{this.formattedDate}}</div>
+            <div class="article-title">{{this.title}}</div>
+        </a>
+    {{/each}}
+</div>
+{{else}}
+    <div class="info">No articles</div>
+{{/if}}
